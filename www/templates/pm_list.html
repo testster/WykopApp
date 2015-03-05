@@ -1,0 +1,45 @@
+<ion-view view-title="Private messages">
+    <ion-content>
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list>
+            <ion-item ng-repeat="pm in pmList" href="#/app/pm/{{pm.author}}">
+                <div class="avatar-gender" ng-class="{male: pm.author_sex == 'male',female: pm.author_sex == 'female'}">
+                    <img class="avatar" src="{{pm.author_avatar}}">
+                </div>
+                <div class="username">{{pm.author}}</div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+
+<style>
+    .male {
+        background: #46ABF2;
+    }
+
+    .female {
+        background: #F246D0;
+    }
+
+    .avatar {
+        margin-top: 4px;
+        margin-left: 4px;
+        border-radius: 50%;
+    }
+
+    .avatar-gender {
+        float: left;
+        border-radius: 50%;
+        height: 68px;
+        width: 68px;
+    }
+
+    .username {
+        line-height: 68px;
+        margin-left: 10px;
+        float: left;
+    }
+</style>

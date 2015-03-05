@@ -1,0 +1,81 @@
+<ion-view view-title="{{author}}">
+    <ion-content>
+
+        <!--<ion-list>-->
+        <!--<ion-item ng-repeat="message in pm">-->
+
+        <table>
+            <tbody>
+            <tr ng-repeat="message in pm" class="message"
+                ng-class="{received:message.direction=='received',sent:message.direction=='sended'}">
+                <td class="avatar-gender-sm"
+                    ng-class="{male: message.author_sex == 'male',female: message.author_sex == 'female',received:message.direction=='received',sent:message.direction=='sended'}">
+                    <img class="avatar-sm" src="{{message.author_avatar}}">
+                </td>
+                <td class="body" ng-class="{sent:message.direction=='sended'}">{{message.body}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+        <!--</ion-item>-->
+        <!--</ion-list>-->
+    </ion-content>
+</ion-view>
+
+<style>
+    .male {
+        background: #46ABF2;
+    }
+
+    .female {
+        background: #F246D0;
+    }
+
+    .avatar-sm {
+        margin-top: 2px;
+        margin-left: 2px;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+    }
+
+    .avatar-gender-sm {
+        border-radius: 50%;
+        height: 34px;
+        width: 34px;
+    }
+
+    .body {
+        padding-left: 10px;
+        padding-right: 10px;
+        word-wrap: break-word;
+        position: relative;
+        vertical-align: middle;
+    }
+
+    .message {
+        display: block;
+        width: 100%;
+        margin: 10px;
+        padding: 10px 10px 10px 15px;
+        border-radius: 5px;
+    }
+
+    .sent {
+        float: right;
+    }
+    .message.sent{
+        background-color: #01DC4C;
+        color: #fff;
+    }
+    .received {
+        float: left;
+    }
+    .message.received{
+        background-color: #126DFD;
+        color: #fff;
+    }
+</style>
